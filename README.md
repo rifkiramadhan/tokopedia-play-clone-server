@@ -18,6 +18,34 @@ The database consists of three collections, each represented by a Mongoose schem
 
 ## API Request and Response
 
+### Categories
+
+`Get all categories.`
+
+**GET /categories**
+
+**Response**
+
+```
+{
+    "_id": "ObjectId",
+    "name": "string",
+    "createdAt": "date",
+    "updatedAt": "date",
+},
+
+```
+
+**POST /categories**
+
+**Request**
+
+```
+{
+    "name": "string"
+}
+```
+
 ### Videos
 
 **GET /videos**
@@ -92,6 +120,42 @@ The database consists of three collections, each represented by a Mongoose schem
 }
 ```
 
+**GET /videos/:id/views**
+`Get views.`
+
+**Response**
+
+```
+{
+    message: "Views incremented",
+    views: number
+}
+```
+
+**GET /videos/search**
+`Get videos search`
+
+```
+Query Params: search: string
+```
+
+```
+{
+    status: "200 OK",
+    body: "Array of Video objects"
+}
+```
+
+**GET /videos/category/:categoryId**
+`Get videos by category`
+
+```
+{
+    status: "200 OK",
+    body: "Array of Video objects with populated categories"
+}
+```
+
 ### Products
 
 **GET /products/:videoID**
@@ -99,16 +163,18 @@ The database consists of three collections, each represented by a Mongoose schem
 
 **Response**
 
-```
+````
+
 [
-    {
-        "linkProduct": "string",
-        "title": "string",
-        "price": 0,
-        "videoID": "ObjectId",
-    },
-    ...
+{
+"linkProduct": "string",
+"title": "string",
+"price": 0,
+"videoID": "ObjectId",
+},
+...
 ]
+
 ```
 
 **POST /products**
@@ -117,20 +183,24 @@ The database consists of three collections, each represented by a Mongoose schem
 **Request**
 
 ```
+
 {
-    "linkProduct": "string",
-    "title": "string",
-    "price": 0,
-    "videoID": "ObjectId",
+"linkProduct": "string",
+"title": "string",
+"price": 0,
+"videoID": "ObjectId",
 }
+
 ```
 
 **Response**
 
 ```
+
 {
-    "message": "Success"
+"message": "Success"
 }
+
 ```
 
 **PUT /products/:id**
@@ -139,26 +209,30 @@ The database consists of three collections, each represented by a Mongoose schem
 **Request**
 
 ```
+
 {
-    "linkProduct": "string",
-    "title": "string",
-    "price": 0,
-    "videoID": "ObjectId",
+"linkProduct": "string",
+"title": "string",
+"price": 0,
+"videoID": "ObjectId",
 }
+
 ```
 
 **Response**
 
 ```
+
 {
-    "message": "Success",
-    "product": {
-        "linkProduct": "string",
-        "title": "string",
-        "price": 0,
-        "videoID": "ObjectId",
-    }
+"message": "Success",
+"product": {
+"linkProduct": "string",
+"title": "string",
+"price": 0,
+"videoID": "ObjectId",
 }
+}
+
 ```
 
 **DELETE /products/:id**
@@ -167,9 +241,11 @@ The database consists of three collections, each represented by a Mongoose schem
 **Response**
 
 ```
+
 {
-    "message": "Success"
+"message": "Success"
 }
+
 ```
 
 ### Comments
@@ -180,15 +256,17 @@ The database consists of three collections, each represented by a Mongoose schem
 **Response**
 
 ```
+
 [
-    {
-        "username": "string",
-        "comment": "string",
-        "timestamp": "date",
-        "videoID": "ObjectId",
-    },
-    ...
+{
+"username": "string",
+"comment": "string",
+"timestamp": "date",
+"videoID": "ObjectId",
+},
+...
 ]
+
 ```
 
 **POST /comments**
@@ -197,19 +275,23 @@ The database consists of three collections, each represented by a Mongoose schem
 **Request**
 
 ```
+
 {
-    "username": "string",
-    "comment": "string",
-    "videoID": "ObjectId",
+"username": "string",
+"comment": "string",
+"videoID": "ObjectId",
 }
+
 ```
 
 **Response**
 
 ```
+
 {
-    "message": "Success"
+"message": "Success"
 }
+
 ```
 
 **PUT /comments/:id**
@@ -218,24 +300,28 @@ The database consists of three collections, each represented by a Mongoose schem
 **Request**
 
 ```
+
 {
-    "username": "string",
-    "comment": "string",
+"username": "string",
+"comment": "string",
 }
+
 ```
 
 **Response**
 
 ```
+
 {
-    "message": "Success",
-    "comment": {
-        "username": "string",
-        "comment": "string",
-        "timestamp": "date",
-        "videoID": "ObjectId",
-    }
+"message": "Success",
+"comment": {
+"username": "string",
+"comment": "string",
+"timestamp": "date",
+"videoID": "ObjectId",
 }
+}
+
 ```
 
 **DELETE /comments/:id**
@@ -244,9 +330,11 @@ The database consists of three collections, each represented by a Mongoose schem
 **Response**
 
 ```
+
 {
-    "message": "Success"
+"message": "Success"
 }
+
 ```
 
 ## How to Run Locally
@@ -257,31 +345,44 @@ Follow these steps to run this API locally:
 2. Navigate into the project directory:
 
 ```
+
 cd project-directory
+
 ```
 
 3. Install the necessary dependencies:
 
 ```
+
 npm install
+
 ```
 
 4. Setup environment variables by creating a .env file in the root directory. It should contain the following:
 
 ```
+
 PORT=5000
 MONGO_URL=your_mongodb_url
+
 ```
 
 5. Replace your_mongodb_url with your actual MongoDB connection URL.
 6. Run the server:
 
 ```
+
 npm run dev
+
 ```
 
 The server should now be running on:
 
 ```
+
 http://localhost:5000.
+
 ```
+
+```
+````
