@@ -11,7 +11,8 @@
   "author": "Rifki Ramadhan",
   "license": "ISC",
   "engines": {
-    "node": "14.x"
+    "node": "18.16.x",
+    "npm": "6.x.x"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
